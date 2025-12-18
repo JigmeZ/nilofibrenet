@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // In a real application, you would send this data to a server
             console.log('Form submitted:', data);
             
-            // Show success message
+            // Show success message (in production, replace with proper notification system)
+            // For now, using alert for simplicity
             alert('Thank you for your message! We will get back to you shortly.');
             
             // Reset form
