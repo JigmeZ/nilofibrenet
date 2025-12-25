@@ -1399,6 +1399,67 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Contact Info Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <a
+              href="tel:+97517608088"
+              className="flex items-center gap-4 p-6 rounded-2xl bg-linear-to-br from-[#3D52A0]/10 to-[#7091E6]/10 border border-[#3D52A0]/20 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#3D52A0] shadow-lg">
+                <svg
+                  className="h-7 w-7 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-[#3D52A0] uppercase tracking-wide">
+                  Call Us
+                </p>
+                <p className="text-lg font-bold text-gray-900 group-hover:text-[#3D52A0] transition-colors">
+                  +975 77 88 88 66
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="mailto:nima.lotey@gmail.com"
+              className="flex items-center gap-4 p-6 rounded-2xl bg-linear-to-br from-[#7091E6]/10 to-[#8697C4]/10 border border-[#7091E6]/20 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#7091E6] shadow-lg">
+                <svg
+                  className="h-7 w-7 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-[#7091E6] uppercase tracking-wide">
+                  Email Us
+                </p>
+                <p className="text-lg font-bold text-gray-900 group-hover:text-[#7091E6] transition-colors">
+                  nima.lotey@gmail.com
+                </p>
+              </div>
+            </a>
+          </div>
+
           {submitted ? (
             <div className="rounded-2xl border-2 border-green-200 bg-green-50 p-6 text-green-800 font-semibold text-center shadow-lg text-base">
               Thank you! Your message has been submitted.
@@ -1435,7 +1496,7 @@ export default function Home() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3D52A0] focus:border-transparent transition-all duration-200"
-                  placeholder="your@email.com"
+                  placeholder="nima.lotey@gmail.com"
                 />
                 {errors.email && (
                   <p className="mt-2 text-xs text-red-600 font-semibold">

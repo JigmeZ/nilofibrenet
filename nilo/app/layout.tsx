@@ -95,11 +95,9 @@ export default function RootLayout({
                   Contact
                 </h4>
                 <ul className="space-y-2">
+                  <li className="text-sm text-gray-600">Email: info@nlfs.bt</li>
                   <li className="text-sm text-gray-600">
-                    Email: info@nlfs.bt
-                  </li>
-                  <li className="text-sm text-gray-600">
-                    Phone: +975 17 11 32 80
+                    Phone: +975 77 88 88 66
                   </li>
                   <li className="text-sm text-gray-600">Bhutan</li>
                 </ul>
