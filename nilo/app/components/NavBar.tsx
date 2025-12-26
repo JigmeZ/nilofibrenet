@@ -23,13 +23,18 @@ export default function NavBar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <nav
+      className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm"
+      role="navigation"
+      aria-label="Main"
+    >
       <div className="mx-auto max-w-7xl px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 active:scale-95 transition-transform"
+            aria-label="Go to Home"
+            className="flex items-center gap-2 active:scale-95 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D52A0] rounded-md"
           >
             <Image
               src={logo}
@@ -48,7 +53,8 @@ export default function NavBar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-semibold transition-all duration-200 relative group ${
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={`text-sm font-semibold transition-all duration-200 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D52A0] rounded-md ${
                   isActive(link.href)
                     ? "text-[#3D52A0]"
                     : "text-gray-700 hover:text-[#3D52A0]"
@@ -73,7 +79,9 @@ export default function NavBar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-[#3D52A0] active:bg-[#3D52A0]/10 rounded-lg transition-all duration-200"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            className="md:hidden p-2 text-gray-700 hover:text-[#3D52A0] active:bg-[#3D52A0]/10 rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D52A0]"
           >
             <svg
               className="w-6 h-6"
@@ -97,13 +105,17 @@ export default function NavBar() {
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-2 border-t border-gray-100 pt-4 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div
+            id="mobile-menu"
+            className="md:hidden mt-4 pb-4 space-y-2 border-t border-gray-100 pt-4 animate-in fade-in slide-in-from-top-2 duration-200"
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 ${
+                className={`block px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D52A0] ${
                   isActive(link.href)
                     ? "bg-[#3D52A0]/10 text-[#3D52A0] border-l-4 border-[#3D52A0]"
                     : "text-gray-700 hover:bg-[#3D52A0]/5 hover:text-[#3D52A0] active:bg-[#3D52A0]/20"

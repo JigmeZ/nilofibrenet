@@ -7,6 +7,26 @@ export const metadata: Metadata = {
   title: "NILO FibreNet — Reliable Internet & Digital Services in Bhutan",
   description:
     "High-speed fibre internet, TV, and CCTV services for homes and businesses across Bhutan.",
+  openGraph: {
+    title: "NILO FibreNet — Reliable Internet & Digital Services in Bhutan",
+    description:
+      "High-speed fibre internet, TV, and CCTV services for homes and businesses across Bhutan.",
+    url: "https://www.nilofibrenet.bt",
+    siteName: "NILO FibreNet",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NILO FibreNet — Reliable Internet & Digital Services in Bhutan",
+    description:
+      "High-speed fibre internet, TV, and CCTV services for homes and businesses across Bhutan.",
+  },
+  themeColor: "#3D52A0",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -17,6 +37,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        {/* Skip link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-white focus:text-[#3D52A0] focus:px-3 focus:py-2 focus:rounded-md focus:shadow-lg"
+        >
+          Skip to content
+        </a>
         <NavBar />
 
         {children}
@@ -95,9 +122,23 @@ export default function RootLayout({
                   Contact
                 </h4>
                 <ul className="space-y-2">
-                  <li className="text-sm text-gray-600">Email: info@nlfs.bt</li>
                   <li className="text-sm text-gray-600">
-                    Phone: +975 77 88 88 66
+                    Email:{" "}
+                    <a
+                      href="mailto:info@nlfs.bt"
+                      className="hover:text-[#3D52A0] underline underline-offset-2"
+                    >
+                      info@nlfs.bt
+                    </a>
+                  </li>
+                  <li className="text-sm text-gray-600">
+                    Phone:{" "}
+                    <a
+                      href="tel:+97577888866"
+                      className="hover:text-[#3D52A0] underline underline-offset-2"
+                    >
+                      +975 77 88 88 66
+                    </a>
                   </li>
                   <li className="text-sm text-gray-600">Bhutan</li>
                 </ul>

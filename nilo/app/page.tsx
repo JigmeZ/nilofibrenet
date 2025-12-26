@@ -212,6 +212,7 @@ export default function Home() {
 
   return (
     <main
+      id="main-content"
       className={`min-h-screen bg-white overflow-x-hidden ${inter.className}`}
     >
       {/* Hero Section */}
@@ -326,6 +327,7 @@ export default function Home() {
                 fill
                 className="object-cover"
                 priority
+                sizes="(min-width:1024px) 50vw, 100vw"
               />
             </div>
           </div>
@@ -384,6 +386,7 @@ export default function Home() {
                 fill
                 className="object-cover"
                 priority
+                sizes="(min-width:1024px) 40vw, 100vw"
               />
             </div>
             <div className="space-y-3">
@@ -585,6 +588,7 @@ export default function Home() {
                     fill
                     className="object-cover"
                     priority
+                    sizes="(min-width:1024px) 50vw, 100vw"
                   />
                 </div>
               </div>
@@ -1470,11 +1474,16 @@ export default function Home() {
               className="grid grid-cols-1 gap-6 sm:grid-cols-2 bg-linear-to-br from-gray-50 to-white p-8 rounded-3xl border border-gray-100 shadow-xl"
             >
               <div className="sm:col-span-1">
-                <label className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2">
+                <label
+                  htmlFor="contact-name"
+                  className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2"
+                >
                   Name
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
+                  autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3D52A0] focus:border-transparent transition-all duration-200"
@@ -1488,11 +1497,16 @@ export default function Home() {
               </div>
 
               <div className="sm:col-span-1">
-                <label className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2">
+                <label
+                  htmlFor="contact-email"
+                  className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2"
+                >
                   Email
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3D52A0] focus:border-transparent transition-all duration-200"
@@ -1506,10 +1520,14 @@ export default function Home() {
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2">
+                <label
+                  htmlFor="contact-message"
+                  className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2"
+                >
                   Message
                 </label>
                 <textarea
+                  id="contact-message"
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}

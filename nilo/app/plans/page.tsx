@@ -14,25 +14,12 @@ export default function PlansPage() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
     "monthly"
   );
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
-  // Detailed pricing table data (monthly MRC)
-  const mrcTable = [
-    { speed: "2 - 3", mrc: 1100 },
-    { speed: 3, mrc: 1650 },
-    { speed: 4, mrc: 2200 },
-    { speed: 5, mrc: 2750 },
-    { speed: 6, mrc: 3300 },
-    { speed: 7, mrc: 3850 },
-    { speed: 8, mrc: 4400 },
-    { speed: 9, mrc: 4950 },
-    { speed: 10, mrc: 5500 },
-    { speed: 11, mrc: 6050 },
-    { speed: 12, mrc: 6600 },
-  ];
+  const speeds = ["2–3", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
   return (
     <main
+      id="main-content"
       className={`min-h-screen bg-white overflow-x-hidden ${inter.className}`}
     >
       {/* Hero Section */}
@@ -43,7 +30,7 @@ export default function PlansPage() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#7091E6]/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="mx-autox max-w-7xl space-y-8 relative z-10">
+        <div className="mx-auto max-w-7xl space-y-8 relative z-10">
           <div className="text-center space-y-4">
             <div className="inline-block">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#3D52A0] bg-[#3D52A0]/10 rounded-full px-4 py-2">
@@ -99,50 +86,50 @@ export default function PlansPage() {
       <section className="py-12 sm:py-16 px-4 sm:px-6 bg-linear-to-b from-gray-50 to-white">
         {/* Plan & Speed Table - Simplified View */}
 
-          <div className="mx-auto max-w-4xl">
-            <div className="mb-4 sm:mb-6 text-center">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                Plans and Speeds
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-gray-600">
-                Quick view of available plans and their speeds.
-              </p>
-            </div>
-
-            <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
-              <table className="min-w-full table-fixed">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="w-1/2 px-4 sm:px-6 py-3 text-center text-xs sm:text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                      Plan
-                    </th>
-                    <th className="w-1/2 px-4 sm:px-6 py-3 text-center text-xs sm:text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                      Speed
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {mrcTable.map((p) => (
-                    <tr
-                      key={p.speed}
-                      className="hover:bg-[#3D52A0]/5 transition-colors"
-                    >
-                      <td className="px-4 sm:px-6 py-4 text-center text-gray-900 text-sm sm:text-base font-semibold">
-                        {p.speed} Mbps
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 text-center text-gray-800 text-sm sm:text-base font-medium">
-                        Nu. {p.mrc.toLocaleString()}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <p className="mt-3 text-xs text-gray-500 text-center">
-              Contact us for custom enterprise speeds and SLAs.
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-4 sm:mb-6 text-center">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+              Plans and Speeds
+            </h2>
+            <p className="mt-2 text-sm sm:text-base text-gray-600">
+              Quick view of available speeds.
             </p>
           </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+            <table
+              className="min-w-full table-fixed"
+              aria-label="Available speeds"
+            >
+              <thead>
+                <tr className="bg-gray-100">
+                  <th
+                    scope="col"
+                    className="px-4 sm:px-6 py-3 text-center text-xs sm:text-sm font-semibold text-gray-700 uppercase tracking-wide"
+                  >
+                    Speed (Mbps)
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {speeds.map((s) => (
+                  <tr
+                    key={s}
+                    className="hover:bg-[#3D52A0]/5 transition-colors"
+                  >
+                    <td className="px-4 sm:px-6 py-4 text-center text-gray-900 text-sm sm:text-base font-semibold">
+                      {s} Mbps
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="mt-3 text-xs text-gray-500 text-center">
+            Contact us for custom enterprise speeds and SLAs.
+          </p>
+        </div>
       </section>
 
       {/* FAQ Section */}

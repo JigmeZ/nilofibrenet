@@ -20,7 +20,7 @@ const team = [
 
 export default function TeamPage() {
   return (
-    <main className="min-h-screen bg-zinc-50 dark:bg-black">
+    <main id="main-content" className="min-h-screen bg-zinc-50 dark:bg-black">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <h1 className="text-3xl font-bold text-black dark:text-white">
           Meet the Team
@@ -62,7 +62,7 @@ export default function TeamPage() {
         <div className="mt-10">
           <Link
             href="/contact"
-            className="inline-flex h-11 items-center justify-center rounded-md bg-black px-5 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+            className="inline-flex h-11 items-center justify-center rounded-md bg-black px-5 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D52A0]"
           >
             Work with us
           </Link>
