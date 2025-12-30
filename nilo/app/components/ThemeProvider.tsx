@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useLayoutEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -13,10 +13,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
+  useLayoutEffect(() => {
     // Check localStorage or system preference
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     const systemPreference = window.matchMedia("(prefers-color-scheme: dark)")
@@ -29,6 +27,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     if (initialTheme === "dark") {
       document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
@@ -44,7 +44,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  // Always provide the context, even before mounting
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
