@@ -210,29 +210,195 @@ export default function Home() {
   const { ref: testimonialsHeaderRef, inView: testimonialsHeaderInView } =
     useInView<HTMLDivElement>();
 
+  // News data - UPDATE THIS WEEKLY
+  // Simply replace the entries below with new news items
+  // Format: { date: "MMM DD, YYYY", title: "...", excerpt: "...", category: "...", link: "#" }
+  const news = [
+    {
+      date: "Dec 15, 2024",
+      title: "Fiber Network Expansion Reaches Paro Valley",
+      excerpt:
+        "NILO FibreNet announces completion of fiber-optic infrastructure in Paro, bringing high-speed connectivity to 500+ new households.",
+      category: "Expansion",
+      link: "#",
+    },
+    {
+      date: "Dec 8, 2024",
+      title: "Enterprise WiFi Solution Launched for Hotels",
+      excerpt:
+        "New managed WiFi service tailored for hospitality sector with guest analytics and seamless roaming across properties.",
+      category: "Product",
+      link: "#",
+    },
+    {
+      date: "Nov 30, 2024",
+      title: "NILO FibreNet Wins Best ISP Award 2024",
+      excerpt:
+        "Recognized for customer service excellence and network reliability by Bhutan Digital Association.",
+      category: "Awards",
+      link: "#",
+    },
+  ];
+
   return (
     <main
       id="main-content"
-      className={`min-h-screen bg-white overflow-x-hidden ${inter.className}`}
+      className={`min-h-screen bg-white dark:bg-gray-900 overflow-x-hidden ${inter.className}`}
     >
       {/* Hero Section */}
       <section
         id="hero"
-        className="py-20 px-6 bg-linear-to-b from-white via-[#7091E6]/5 to-white"
+        className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-white dark:bg-gray-900"
       >
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-16 items-center lg:grid-cols-2">
-            <div
-              ref={heroTextRef}
-              className={`flex flex-col justify-center space-y-6 transition-all duration-700 ease-out will-change-transform ${
+        <div className="grid grid-cols-1 gap-16 items-center lg:grid-cols-2 mx-auto max-w-7xl">
+          <div
+            ref={heroTextRef}
+            className={`flex flex-col justify-center space-y-6 transition-all duration-700 ease-out will-change-transform ${
+              heroTextInView
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+            }`}
+          >
+            <p
+              className={`text-[10px] font-bold text-[#047857] uppercase tracking-[0.2em] ${
                 heroTextInView
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
+                  : "opacity-0 translate-y-1"
               }`}
+              style={{
+                transition: "all 700ms ease-out",
+                transitionDelay: "100ms",
+              }}
             >
+              Welcome to NILO FibreNet
+            </p>
+            <h1
+              className={`text-3xl sm:text-4xl font-extrabold tracking-tight text-black dark:text-white md:text-5xl lg:text-6xl leading-[1.2] sm:leading-[1.1] ${
+                heroTextInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-1"
+              }`}
+              style={{
+                transition: "all 700ms ease-out",
+                transitionDelay: "200ms",
+              }}
+            >
+              Reliable Internet &{" "}
+              <span className="text-[#047857]">Digital Services</span> in Bhutan
+            </h1>
+            <p
+              className={`${
+                heroTextInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-1"
+              } text-base text-black dark:text-white leading-relaxed font-light`}
+              style={{
+                transition: "all 700ms ease-out",
+                transitionDelay: "300ms",
+              }}
+            >
+              NILO FibreNet delivers high-speed fibre internet, premium TV
+              services, and advanced CCTV security solutions for homes and
+              businesses across Bhutan. Built on stability, supported by local
+              expertise.
+            </p>
+            <div
+              className={`${
+                heroTextInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-1"
+              } flex flex-col gap-3 sm:gap-4 sm:flex-row pt-4 w-full`}
+              style={{
+                transition: "all 700ms ease-out",
+                transitionDelay: "400ms",
+              }}
+            >
+              <Link
+                href="/#services"
+                className="group inline-flex h-12 sm:h-12 items-center justify-center rounded-xl bg-[#047857] px-6 sm:px-8 text-sm font-bold text-white shadow-lg shadow-[#047857]/30 hover:bg-[#059669] hover:shadow-xl hover:shadow-[#059669]/40 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+              >
+                Explore Services
+                <svg
+                  className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </Link>
+              <Link
+                href="/#about"
+                className="inline-flex h-12 items-center justify-center rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-6 sm:px-8 text-sm font-bold text-black dark:text-white hover:border-[#047857] dark:hover:border-[#34d399] hover:bg-[#047857]/5 dark:hover:bg-[#34d399]/10 transition-all duration-300 w-full sm:w-auto"
+              >
+                Get in Touch
+              </Link>
+            </div>
+          </div>
+          <div
+            ref={heroRightRef}
+            className={`relative hidden lg:flex items-center justify-center h-112.5 rounded-3xl bg-linear-to-br from-[#34d399] via-[#059669]/20 to-white shadow-2xl overflow-hidden transition-all duration-700 ease-out will-change-transform ${
+              heroRightInView
+                ? "opacity-100 translate-y-0 scale-105 ring-2 ring-[#059669]/30"
+                : "opacity-0 translate-y-6"
+            }`}
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(61,82,160,0.1),transparent_50%)]" />
+            <Image
+              src={image1}
+              alt="Connectivity Partner"
+              fill
+              className="object-cover"
+              priority
+              sizes="(min-width:1024px) 50vw, 100vw"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section - MOVED UP FOR IMMEDIATE CREDIBILITY */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white dark:bg-gray-900">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mx-auto max-w-7xl">
+          {stats.map((stat, idx) => (
+            <div
+              key={idx}
+              className="text-center space-y-2 p-4 sm:p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm dark:shadow-lg hover:shadow-xl dark:hover:shadow-xl transition-all duration-300 group cursor-default"
+            >
+              <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-br from-[#047857] to-[#059669] dark:from-[#34d399] dark:to-[#10b981] group-hover:scale-110 transition-transform duration-300">
+                {stat.number}
+              </div>
+              <div className="text-sm sm:text-base font-semibold text-black dark:text-white uppercase tracking-wide">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* About Section - MOVED EARLIER */}
+      <section
+        id="about"
+        className="py-20 px-6 bg-white dark:bg-gray-900 overflow-hidden"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mx-auto max-w-7xl">
+          {/* Left Column - Content */}
+          <div
+            ref={aboutTextRef}
+            className={`space-y-8 transition-all duration-700 ease-out will-change-transform ${
+              aboutTextInView
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+            }`}
+          >
+            <div className="space-y-4">
               <p
-                className={`text-[10px] font-bold text-[#3D52A0] uppercase tracking-[0.2em] ${
-                  heroTextInView
+                className={`text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] ${
+                  aboutTextInView
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-1"
                 }`}
@@ -241,11 +407,11 @@ export default function Home() {
                   transitionDelay: "100ms",
                 }}
               >
-                Welcome to NILO FibreNet
+                About NILO FibreNet
               </p>
-              <h1
-                className={`text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl leading-[1.1] ${
-                  heroTextInView
+              <h2
+                className={`text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight leading-[1.1] ${
+                  aboutTextInView
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-1"
                 }`}
@@ -254,130 +420,262 @@ export default function Home() {
                   transitionDelay: "200ms",
                 }}
               >
-                Reliable Internet &{" "}
-                <span className="text-[#3D52A0]">Digital Services</span> in
-                Bhutan
-              </h1>
-              <p
-                className={`${
-                  heroTextInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1"
-                } text-base text-gray-600 leading-relaxed font-light`}
-                style={{
-                  transition: "all 700ms ease-out",
-                  transitionDelay: "300ms",
-                }}
-              >
-                NILO FibreNet delivers high-speed fibre internet, premium TV
-                services, and advanced CCTV security solutions for homes and
-                businesses across Bhutan. Built on stability, supported by local
-                expertise.
+                Connecting, <span className="text-[#10b981]">One Home</span> at
+                a Time
+              </h2>
+            </div>
+
+            <div
+              className={`${
+                aboutTextInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-1"
+              } space-y-5 text-black dark:text-white text-base leading-relaxed font-light`}
+              style={{
+                transition: "all 700ms ease-out",
+                transitionDelay: "300ms",
+              }}
+            >
+              <p>
+                Since our founding, NILO FibreNet has been committed to bridging
+                the digital divide across Bhutan. We believe that reliable
+                internet access is not just a luxury, it is a necessity for
+                education, business, and staying connected with loved ones.
               </p>
-              <div
-                className={`${
-                  heroTextInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1"
-                } flex flex-col gap-4 sm:flex-row pt-2`}
-                style={{
-                  transition: "all 700ms ease-out",
-                  transitionDelay: "400ms",
-                }}
-              >
-                <Link
-                  href="/#services"
-                  className="group inline-flex h-12 items-center justify-center rounded-xl bg-[#3D52A0] px-8 text-sm font-bold text-white shadow-lg shadow-[#3D52A0]/30 hover:bg-[#7091E6] hover:shadow-xl hover:shadow-[#7091E6]/40 transition-all duration-300 hover:scale-105"
-                >
-                  Explore Services
-                  <svg
-                    className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </Link>
-                <Link
-                  href="/#about"
-                  className="inline-flex h-12 items-center justify-center rounded-xl border-2 border-gray-200 bg-white px-8 text-sm font-bold text-gray-900 hover:border-[#7091E6] hover:bg-[#7091E6]/5 transition-all duration-300"
-                >
-                  Get in Touch
-                </Link>
+              <p>
+                What started as a vision to bring high-speed connectivity to
+                underserved communities has grown into a trusted network serving
+                thousands of homes and businesses throughout the country. Our
+                fiber-optic infrastructure delivers blazing-fast speeds while
+                our local team ensures you are never left disconnected.
+              </p>
+            </div>
+
+            {/* Mission & Values */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+              <div className="space-y-3 p-5 rounded-2xl bg-linear-to-br from-[#059669]/10 to-transparent dark:from-[#34d399]/20 dark:to-transparent border border-[#059669]/20 dark:border-[#34d399]/30 hover:shadow-lg transition-shadow duration-300">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#047857] dark:bg-[#34d399] shadow-lg">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-black dark:text-white">
+                    Our Mission
+                  </h3>
+                </div>
+                <p className="text-sm text-black dark:text-gray-300 leading-relaxed">
+                  To empower every household and business in Bhutan with
+                  world-class connectivity that drives growth and opportunity.
+                </p>
+              </div>
+
+              <div className="space-y-3 p-5 rounded-2xl bg-linear-to-br from-[#10b981]/10 to-transparent dark:from-[#10b981]/20 dark:to-transparent border border-[#10b981]/20 dark:border-[#10b981]/30 hover:shadow-lg transition-shadow duration-300">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#10b981] dark:bg-[#10b981] shadow-lg">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                      <path d="M2 17l10 5 10-5" />
+                      <path d="M2 12l10 5 10-5" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-black dark:text-white">
+                    Our Values
+                  </h3>
+                </div>
+                <p className="text-sm text-black dark:text-gray-300 leading-relaxed">
+                  Integrity, reliability, and customer-first service guide
+                  everything we do. We are building lasting relationships, not
+                  just networks.
+                </p>
               </div>
             </div>
+
             <div
-              ref={heroRightRef}
-              className={`relative hidden lg:flex items-center justify-center h-112.5 rounded-3xl bg-linear-to-br from-[#ADBBDA] via-[#7091E6]/20 to-white shadow-2xl overflow-hidden transition-all duration-700 ease-out will-change-transform ${
-                heroRightInView
-                  ? "opacity-100 translate-y-0 scale-105 ring-2 ring-[#7091E6]/30"
+              className={`${
+                aboutTextInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-1"
+              } pt-2`}
+              style={{
+                transition: "all 700ms ease-out",
+                transitionDelay: "400ms",
+              }}
+            >
+              <Link
+                href="/#teams"
+                className="inline-flex h-12 items-center justify-center rounded-xl bg-[#047857] hover:bg-[#059669] dark:bg-[#34d399] dark:hover:bg-[#10b981] px-8 text-sm font-bold text-white dark:text-black transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Meet Our Team
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column - Visual Elements */}
+          <div className="relative">
+            {/* Main Image */}
+            <div
+              ref={aboutRightRef}
+              className={`relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-900/20 transition-all duration-700 ease-out will-change-transform ${
+                aboutRightInView
+                  ? "opacity-100 translate-y-0 scale-[1.02] ring-2 ring-[#059669]/25"
                   : "opacity-0 translate-y-6"
               }`}
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(61,82,160,0.1),transparent_50%)]" />
-              <Image
-                src={image1}
-                alt="Connectivity Partner"
-                fill
-                className="object-cover"
-                priority
-                sizes="(min-width:1024px) 50vw, 100vw"
-              />
+              <div className="relative aspect-4/5">
+                <Image
+                  src={image}
+                  alt="NILO FibreNet Office"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(min-width:1024px) 50vw, 100vw"
+                />
+              </div>
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-[#059669]/10 to-transparent rounded-full blur-3xl" />
+          </div>
+        </div>
+
+        {/* Key Highlights */}
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-linear-to-br from-[#047857] to-[#059669] dark:from-[#34d399] dark:to-[#10b981] rounded-3xl opacity-0 group-hover:opacity-10 transform group-hover:scale-105 transition-all duration-300 blur-xl" />
+            <div className="relative p-8 space-y-4 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-[#047857] to-[#059669] dark:from-[#34d399] dark:to-[#10b981] text-white shadow-xl">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-7 w-7"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-black dark:text-white">
+                Lightning Fast
+              </h3>
+              <p className="text-sm text-black dark:text-gray-300 leading-relaxed">
+                Experience fiber-optic speeds up to 1Gbps. Stream, game, and
+                work without buffering or lag.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative group">
+            <div className="absolute inset-0 bg-linear-to-br from-[#10b981] to-[#34d399] dark:from-[#10b981] dark:to-[#34d399] rounded-3xl opacity-0 group-hover:opacity-10 transform group-hover:scale-105 transition-all duration-300 blur-xl" />
+            <div className="relative p-8 space-y-4 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-[#10b981] to-[#34d399] text-white shadow-xl">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-7 w-7"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-black dark:text-white">
+                99.9% Uptime
+              </h3>
+              <p className="text-sm text-black dark:text-gray-300 leading-relaxed">
+                Our robust infrastructure and proactive monitoring ensure you
+                stay connected when it matters most.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative group">
+            <div className="absolute inset-0 bg-linear-to-br from-[#059669] to-[#34d399] dark:from-[#059669] dark:to-[#34d399] rounded-3xl opacity-0 group-hover:opacity-10 transform group-hover:scale-105 transition-all duration-300 blur-xl" />
+            <div className="relative p-8 space-y-4 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-[#059669] to-[#34d399] text-white shadow-xl">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-7 w-7"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-black dark:text-white">
+                Local Support
+              </h3>
+              <p className="text-sm text-black dark:text-gray-300 leading-relaxed">
+                Our Bhutanese team speaks your language and understands your
+                needs. Real people, real solutions.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* WiFi First Section */}
-      <section className="py-16 px-6 bg-linear-to-r from-[#3D52A0]/5 via-white to-[#7091E6]/5">
+      <section className="py-16 px-6 bg-white dark:bg-gray-900">
         <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-5">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#3D52A0]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] dark:text-[#34d399]">
               WiFi First
             </p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white leading-tight">
               Blazing WiFi for Home & Business
             </h2>
-            <p className="text-base text-gray-600 font-light">
+            <p className="text-base text-black dark:text-gray-300 font-light">
               WiFi is our core focus—built on fibre for consistent speed,
               uptime, and seamless roaming across your space.
             </p>
-            <ul className="space-y-3 text-sm text-gray-700">
+            <ul className="space-y-3 text-sm text-black dark:text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-[#3D52A0]" />
+                <span className="mt-1 h-2 w-2 rounded-full bg-[#047857] dark:bg-[#34d399]" />
                 Whole-home coverage with premium routers
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-[#3D52A0]" />
+                <span className="mt-1 h-2 w-2 rounded-full bg-[#047857] dark:bg-[#34d399]" />
                 Priority support and remote diagnostics
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-[#3D52A0]" />
+                <span className="mt-1 h-2 w-2 rounded-full bg-[#047857] dark:bg-[#34d399]" />
                 Flexible add-ons: mesh extenders, guest WiFi, SLAs
               </li>
             </ul>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link
                 href="/plans"
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-[#3D52A0] px-8 text-sm font-bold text-white shadow-lg shadow-[#3D52A0]/30 hover:bg-[#7091E6] transition-all duration-300"
+                className="inline-flex h-12 items-center justify-center rounded-xl bg-[#047857] hover:bg-[#059669] dark:bg-[#34d399] dark:hover:bg-[#10b981] px-8 text-sm font-bold text-white dark:text-black shadow-lg shadow-[#047857]/30 dark:shadow-[#34d399]/30 hover:shadow-xl transition-all duration-300"
               >
                 See WiFi Plans
               </Link>
               <Link
                 href="/#contact"
-                className="inline-flex h-12 items-center justify-center rounded-xl border-2 border-[#3D52A0]/30 px-8 text-sm font-bold text-[#3D52A0] hover:bg-[#3D52A0]/5 transition-all duration-300"
+                className="inline-flex h-12 items-center justify-center rounded-xl border-2 border-[#047857] dark:border-[#34d399] px-8 text-sm font-bold text-[#047857] dark:text-[#34d399] hover:bg-[#047857] dark:hover:bg-[#34d399] hover:text-white dark:hover:text-black transition-all duration-300"
               >
                 Talk to an Expert
               </Link>
             </div>
           </div>
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-gray-100 p-6">
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 p-6">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(61,82,160,0.08),transparent_50%)]" />
             <div className="relative h-64 rounded-2xl overflow-hidden mb-6">
               <Image
@@ -390,13 +688,13 @@ export default function Home() {
               />
             </div>
             <div className="space-y-3">
-              <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3D52A0]">
+              <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#047857]">
                 Featured
               </p>
-              <h3 className="text-2xl font-extrabold text-gray-900">
+              <h3 className="text-2xl font-extrabold text-black dark:text-white">
                 Priority WiFi Installation
               </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-black dark:text-gray-300 leading-relaxed">
                 Fast setup, optimal placement, and post-install tuning to
                 maximize your speed where you need it most.
               </p>
@@ -405,570 +703,139 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 px-6 bg-linear-to-r from-[#7091E6]/5 via-[#EDE8F5]/5 to-[#7091E6]/5">
+      {/* How It Works - NEW PROFESSIONAL SECTION */}
+      <section className="py-20 px-6 bg-white dark:bg-gray-900">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className="text-center space-y-2 group cursor-default"
-              >
-                <p className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-br from-[#3D52A0] to-[#7091E6] tracking-tight group-hover:scale-110 transition-transform duration-300">
-                  {stat.number}
-                </p>
-                <p className="text-xs sm:text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                  {stat.label}
-                </p>
+          <div className="text-center space-y-4 mb-16">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] dark:text-[#34d399]">
+              Process
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              How It{" "}
+              <span className="text-[#047857] dark:text-[#34d399]">Works</span>
+            </h2>
+            <p className="text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
+              Get connected in 4 simple steps
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Choose Plan",
+                desc: "Select the perfect WiFi speed for your needs from our flexible plans",
+                icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+              },
+              {
+                step: "02",
+                title: "Contact Us",
+                desc: "Reach out via phone, email, or online form - we respond within hours",
+                icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
+              },
+              {
+                step: "03",
+                title: "Installation",
+                desc: "Professional fiber setup at your location within 48 hours guaranteed",
+                icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
+              },
+              {
+                step: "04",
+                title: "Enjoy",
+                desc: "Start streaming, working, and browsing with blazing-fast speeds instantly",
+                icon: "M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="relative group">
+                {/* Connector Line */}
+                {idx < 3 && (
+                  <div className="hidden lg:block absolute top-12 left-1/2 w-full h-0.5 bg-linear-to-r from-[#047857]/20 dark:from-[#34d399]/20 to-[#047857]/5 dark:to-[#34d399]/5 z-0" />
+                )}
+
+                <div className="relative z-10 text-center space-y-4">
+                  {/* Step Number */}
+                  <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white dark:bg-gray-800 border-4 border-[#047857]/20 dark:border-[#34d399]/20 group-hover:border-[#047857] dark:group-hover:border-[#34d399] group-hover:scale-110 transition-all duration-300 shadow-lg">
+                    <span className="text-3xl font-extrabold text-[#047857] dark:text-[#34d399]">
+                      {item.step}
+                    </span>
+                  </div>
+
+                  {/* Icon */}
+                  <div className="flex justify-center">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#047857]/10 dark:bg-[#34d399]/20 group-hover:bg-[#047857] dark:group-hover:bg-[#34d399] transition-all duration-300">
+                      <svg
+                        className="w-6 h-6 text-[#047857] dark:text-[#34d399] group-hover:text-white transition-colors duration-300"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d={item.icon}
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Title & Description */}
+                  <div>
+                    <h3 className="text-lg font-bold text-black dark:text-white mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-black dark:text-gray-300">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-white overflow-hidden">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - Content */}
-            <div
-              ref={aboutTextRef}
-              className={`space-y-8 transition-all duration-700 ease-out will-change-transform ${
-                aboutTextInView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+          <div className="text-center mt-16">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-[#047857] hover:bg-[#059669] dark:bg-[#34d399] dark:hover:bg-[#10b981] text-white dark:text-black font-bold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              <div className="space-y-4">
-                <p
-                  className={`text-[10px] font-bold uppercase tracking-[0.2em] text-[#3D52A0] ${
-                    aboutTextInView
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-1"
-                  }`}
-                  style={{
-                    transition: "all 700ms ease-out",
-                    transitionDelay: "100ms",
-                  }}
-                >
-                  About NILO FibreNet
-                </p>
-                <h2
-                  className={`text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.1] ${
-                    aboutTextInView
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-1"
-                  }`}
-                  style={{
-                    transition: "all 700ms ease-out",
-                    transitionDelay: "200ms",
-                  }}
-                >
-                  Connecting, <span className="text-[#8697C4]">One Home</span>{" "}
-                  at a Time
-                </h2>
-              </div>
-
-              <div
-                className={`${
-                  aboutTextInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1"
-                } space-y-5 text-gray-600 text-base leading-relaxed font-light`}
-                style={{
-                  transition: "all 700ms ease-out",
-                  transitionDelay: "300ms",
-                }}
+              Get Started Today
+              <svg
+                className="ml-2 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <p>
-                  Since our founding, NILO FibreNet has been committed to
-                  bridging the digital divide across Bhutan. We believe that
-                  reliable internet access is not just a luxury, it is a
-                  necessity for education, business, and staying connected with
-                  loved ones.
-                </p>
-                <p>
-                  What started as a vision to bring high-speed connectivity to
-                  underserved communities has grown into a trusted network
-                  serving thousands of homes and businesses throughout the
-                  country. Our fiber-optic infrastructure delivers blazing-fast
-                  speeds while our local team ensures you are never left
-                  disconnected.
-                </p>
-              </div>
-
-              {/* Mission & Values */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-                <div className="space-y-3 p-5 rounded-2xl bg-linear-to-br from-[#7091E6]/10 to-transparent border border-[#7091E6]/20 hover:shadow-lg transition-shadow duration-300">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#3D52A0] shadow-lg shadow-[#3D52A0]/30">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-5 w-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                      >
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900">
-                      Our Mission
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    To empower every household and business in Bhutan with
-                    world-class connectivity that drives growth and opportunity.
-                  </p>
-                </div>
-
-                <div className="space-y-3 p-5 rounded-2xl bg-linear-to-br from-[#8697C4]/10 to-transparent border border-[#8697C4]/20 hover:shadow-lg transition-shadow duration-300">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8697C4] shadow-lg shadow-[#8697C4]/30">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-5 w-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                      >
-                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                        <path d="M2 17l10 5 10-5" />
-                        <path d="M2 12l10 5 10-5" />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900">
-                      Our Values
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Integrity, reliability, and customer-first service guide
-                    everything we do. We are building lasting relationships, not
-                    just networks.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className={`${
-                  aboutTextInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1"
-                } pt-2`}
-                style={{
-                  transition: "all 700ms ease-out",
-                  transitionDelay: "400ms",
-                }}
-              >
-                <Link
-                  href="/#teams"
-                  className="inline-flex h-12 items-center justify-center rounded-xl bg-gray-900 px-8 text-sm font-bold text-white hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-                >
-                  Meet Our Team
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Column - Visual Elements */}
-            <div className="relative">
-              {/* Main Image */}
-              <div
-                ref={aboutRightRef}
-                className={`relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-900/20 transition-all duration-700 ease-out will-change-transform ${
-                  aboutRightInView
-                    ? "opacity-100 translate-y-0 scale-[1.02] ring-2 ring-[#7091E6]/25"
-                    : "opacity-0 translate-y-6"
-                }`}
-              >
-                <div className="relative aspect-4/5">
-                  <Image
-                    src={image}
-                    alt="NILO FibreNet Office"
-                    fill
-                    className="object-cover"
-                    priority
-                    sizes="(min-width:1024px) 50vw, 100vw"
-                  />
-                </div>
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-[#7091E6]/10 to-transparent rounded-full blur-3xl" />
-            </div>
-          </div>
-
-          {/* Key Highlights */}
-          <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-linear-to-br from-[#3D52A0] to-[#7091E6] rounded-3xl opacity-0 group-hover:opacity-10 transform group-hover:scale-105 transition-all duration-300 blur-xl" />
-              <div className="relative p-8 space-y-4 bg-white rounded-3xl border border-gray-100 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-[#3D52A0] to-[#7091E6] text-white shadow-xl shadow-[#3D52A0]/30">
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-7 w-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  Lightning Fast
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Experience fiber-optic speeds up to 1Gbps. Stream, game, and
-                  work without buffering or lag.
-                </p>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute inset-0 bg-linear-to-br from-[#8697C4] to-[#ADBBDA] rounded-3xl opacity-0 group-hover:opacity-10 transform group-hover:scale-105 transition-all duration-300 blur-xl" />
-              <div className="relative p-8 space-y-4 bg-white rounded-3xl border border-gray-100 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-[#8697C4] to-[#ADBBDA] text-white shadow-xl shadow-[#8697C4]/30">
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-7 w-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  99.9% Uptime
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Our robust infrastructure and proactive monitoring ensure you
-                  stay connected when it matters most.
-                </p>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute inset-0 bg-linear-to-br from-[#7091E6] to-[#ADBBDA] rounded-3xl opacity-0 group-hover:opacity-10 transform group-hover:scale-105 transition-all duration-300 blur-xl" />
-              <div className="relative p-8 space-y-4 bg-white rounded-3xl border border-gray-100 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-[#7091E6] to-[#ADBBDA] text-white shadow-xl shadow-[#7091E6]/30">
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-7 w-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  Local Support
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Our Bhutanese team speaks your language and understands your
-                  needs. Real people, real solutions.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section
-        id="services"
-        className="py-20 px-6 bg-linear-to-b from-gray-50 to-white"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-4x1 bg-linear-to-br from-white via-gray-50 to-[#EDE8F5]/20 p-12 sm:p-16 shadow-xl border border-gray-100">
-            <div
-              ref={servicesHeaderRef}
-              className={`mb-12 max-w-3xl space-y-4 transition-all duration-700 ease-out will-change-transform ${
-                servicesHeaderInView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
-            >
-              <p
-                className={`${
-                  servicesHeaderInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1"
-                } text-[10px] font-bold uppercase tracking-[0.2em] text-[#3D52A0]`}
-                style={{
-                  transition: "all 700ms ease-out",
-                  transitionDelay: "100ms",
-                }}
-              >
-                Services
-              </p>
-              <h2
-                className={`${
-                  servicesHeaderInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1"
-                } text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight`}
-                style={{
-                  transition: "all 700ms ease-out",
-                  transitionDelay: "200ms",
-                }}
-              >
-                Built for <span className="text-[#3D52A0]">speed</span>,
-                reliability, and{" "}
-                <span className="text-[#7091E6]">security</span>
-              </h2>
-              <p
-                className={`${
-                  servicesHeaderInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1"
-                } text-base text-gray-600 font-light`}
-                style={{
-                  transition: "all 700ms ease-out",
-                  transitionDelay: "300ms",
-                }}
-              >
-                Choose the right solution for your home or business. Premium
-                connectivity with local support.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {/* Internet */}
-              <div
-                ref={internetCardRef}
-                className={`group hover-spotlight overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 shadow-lg backdrop-blur transition-all duration-700 ease-out will-change-transform hover:-translate-y-2 hover:border-[#3D52A0]/50 hover:shadow-2xl hover:shadow-[#3D52A0]/20 ${
-                  internetCardInView
-                    ? "opacity-100 -translate-y-2 border-[#3D52A0]/50 shadow-2xl shadow-[#3D52A0]/20"
-                    : "opacity-0 translate-y-6"
-                }`}
-                onMouseMove={(e) => {
-                  const rect = (
-                    e.currentTarget as HTMLDivElement
-                  ).getBoundingClientRect();
-                  e.currentTarget.style.setProperty(
-                    "--x",
-                    `${e.clientX - rect.left}px`
-                  );
-                  e.currentTarget.style.setProperty(
-                    "--y",
-                    `${e.clientY - rect.top}px`
-                  );
-                }}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="inline-flex items-center rounded-full bg-[#3D52A0]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#3D52A0]">
-                    Top Pick
-                  </span>
-                  <span className="text-xs font-semibold text-gray-500">
-                    Primary Service
-                  </span>
-                </div>
-                {/* Replace placeholder with image */}
-                <div className="relative w-full h-40 rounded-2xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src={wifi}
-                    alt="WiFi Router"
-                    fill
-                    className="object-cover"
-                    sizes="(min-width:768px) 33vw, 100vw"
-                    priority
-                  />
-                </div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-[#3D52A0] to-[#7091E6] text-white shadow-xl shadow-[#3D52A0]/40">
-                  {/* WiFi Icon */}
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 20h.01" />
-                    <path d="M8.5 16.5a5 5 0 0 1 7 0" />
-                    <path d="M6 14a8 8 0 0 1 12 0" />
-                    <path d="M3.5 11.5a11.5 11.5 0 0 1 17 0" />
-                  </svg>
-                </div>
-                <span className="mt-4 block text-[10px] font-bold uppercase tracking-[0.15em] text-[#3D52A0]">
-                  Internet
-                </span>
-                <h3 className="mt-2 text-lg font-extrabold text-gray-900">
-                  WiFi / Fibre Internet
-                </h3>
-                <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                  Our flagship service: fibre-backed WiFi with pro-grade
-                  routing, coverage tuning, and priority support for always-on
-                  connectivity.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-4 inline-flex h-10 items-center justify-center rounded-xl bg-[#3D52A0] px-5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#7091E6] hover:shadow-lg hover:shadow-[#3D52A0]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3D52A0] group-hover:scale-105"
-                >
-                  Get Started
-                </Link>
-              </div>
-
-              {/* TV */}
-              <div
-                ref={tvCardRef}
-                className={`group hover-spotlight overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 shadow-lg backdrop-blur transition-all duration-700 ease-out will-change-transform hover:-translate-y-2 hover:border-[#7091E6]/50 hover:shadow-2xl hover:shadow-[#7091E6]/20 ${
-                  tvCardInView
-                    ? "opacity-100 -translate-y-2 border-[#7091E6]/50 shadow-2xl shadow-[#7091E6]/20"
-                    : "opacity-0 translate-y-6"
-                }`}
-                onMouseMove={(e) => {
-                  const rect = (
-                    e.currentTarget as HTMLDivElement
-                  ).getBoundingClientRect();
-                  e.currentTarget.style.setProperty(
-                    "--x",
-                    `${e.clientX - rect.left}px`
-                  );
-                  e.currentTarget.style.setProperty(
-                    "--y",
-                    `${e.clientY - rect.top}px`
-                  );
-                }}
-              >
-                {/* Replace placeholder with image */}
-                <div className="relative w-full h-40 rounded-2xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src={tv}
-                    alt="TV Service"
-                    fill
-                    className="object-cover"
-                    sizes="(min-width:768px) 33vw, 100vw"
-                  />
-                </div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-[#7091E6] to-[#8697C4] text-white shadow-xl shadow-[#7091E6]/40">
-                  {/* TV Icon */}
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="3" y="6" width="18" height="12" rx="2" ry="2" />
-                    <path d="M8 21h8" />
-                  </svg>
-                </div>
-                <span className="mt-4 block text-[10px] font-bold uppercase tracking-[0.15em] text-[#7091E6]">
-                  TV
-                </span>
-                <h3 className="mt-2 text-lg font-extrabold text-gray-900">
-                  TV Services
-                </h3>
-                <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                  HD channels across sports, movies, and entertainment with
-                  flexible packages. Crystal-clear picture quality with our
-                  advanced TV delivery system.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-4 inline-flex h-10 items-center justify-center rounded-xl bg-[#7091E6] px-5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#8697C4] hover:shadow-lg hover:shadow-[#7091E6]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7091E6] group-hover:scale-105"
-                >
-                  Get Started
-                </Link>
-              </div>
-
-              {/* CCTV */}
-              <div
-                ref={cctvCardRef}
-                className={`group hover-spotlight overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 shadow-lg backdrop-blur transition-all duration-700 ease-out will-change-transform hover:-translate-y-2 hover:border-[#8697C4]/50 hover:shadow-2xl hover:shadow-[#8697C4]/20 ${
-                  cctvCardInView
-                    ? "opacity-100 -translate-y-2 border-[#8697C4]/50 shadow-2xl shadow-[#8697C4]/20"
-                    : "opacity-0 translate-y-6"
-                }`}
-                onMouseMove={(e) => {
-                  const rect = (
-                    e.currentTarget as HTMLDivElement
-                  ).getBoundingClientRect();
-                  e.currentTarget.style.setProperty(
-                    "--x",
-                    `${e.clientX - rect.left}px`
-                  );
-                  e.currentTarget.style.setProperty(
-                    "--y",
-                    `${e.clientY - rect.top}px`
-                  );
-                }}
-              >
-                {/* Replace placeholder with image */}
-                <div className="relative w-full h-40 rounded-2xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src={cctv}
-                    alt="CCTV Cameras"
-                    fill
-                    className="object-cover"
-                    sizes="(min-width:768px) 33vw, 100vw"
-                  />
-                </div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-[#8697C4] to-[#ADBBDA] text-white shadow-xl shadow-[#8697C4]/40">
-                  {/* Shield Icon */}
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6l7-4z" />
-                    <path d="M9 12l2 2 4-4" />
-                  </svg>
-                </div>
-                <span className="mt-4 block text-[10px] font-bold uppercase tracking-[0.15em] text-[#8697C4]">
-                  Security
-                </span>
-                <h3 className="mt-2 text-lg font-extrabold text-gray-900">
-                  CCTV Services
-                </h3>
-                <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                  Professional installation, 24/7 monitoring, and expert support
-                  for peace of mind. High-definition surveillance cameras with
-                  cloud storage.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-4 inline-flex h-10 items-center justify-center rounded-xl bg-[#8697C4] px-5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#ADBBDA] hover:shadow-lg hover:shadow-[#8697C4]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8697C4] group-hover:scale-105"
-                >
-                  Get Started
-                </Link>
-              </div>
-            </div>
-
-            {/* soft glow accents */}
-            <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#3D52A0]/10 blur-3xl" />
-            <div className="pointer-events-none absolute -left-32 -bottom-32 h-96 w-96 rounded-full bg-[#7091E6]/10 blur-3xl" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-20 px-6 bg-white" aria-labelledby="why-heading">
+      <section
+        className="py-20 px-6 bg-white dark:bg-gray-900"
+        aria-labelledby="why-heading"
+      >
         <div className="mx-auto max-w-7xl space-y-12">
           <h2
             ref={whyHeaderRef}
             id="why-heading"
-            className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight transition-all duration-700 ease-out will-change-transform ${
+            className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black dark:text-white tracking-tight leading-tight transition-all duration-700 ease-out will-change-transform ${
               whyHeaderInView
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6"
             }`}
           >
-            Why Choose <span className="text-[#3D52A0]">NILO FibreNet</span>
+            Why Choose{" "}
+            <span className="text-[#047857] dark:text-[#34d399]">
+              NILO FibreNet
+            </span>
           </h2>
           <div className="marquee">
             <div className="marquee-track">
@@ -978,13 +845,13 @@ export default function Home() {
                   className="mx-8 flex min-w-130 sm:min-w-145 max-w-2xl flex-none items-start gap-5"
                 >
                   <div>
-                    <div className="text-sm sm:text-base font-semibold uppercase tracking-wider text-[#3D52A0]">
+                    <div className="text-sm sm:text-base font-semibold uppercase tracking-wider text-[#047857] dark:text-[#34d399]">
                       {f.label}
                     </div>
-                    <h3 className="mt-1 text-2xl sm:text-3xl font-bold text-black">
+                    <h3 className="mt-1 text-2xl sm:text-3xl font-bold text-black dark:text-white">
                       {f.title}
                     </h3>
-                    <p className="mt-2 text-base sm:text-lg text-gray-700">
+                    <p className="mt-2 text-base sm:text-lg text-black dark:text-white">
                       {f.desc}
                     </p>
                   </div>
@@ -995,8 +862,90 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trust & Certifications - NEW PROFESSIONAL SECTION */}
+      <div className="py-20 px-6 bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center space-y-4 mb-16">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] dark:text-[#34d399]">
+              Trust & Quality
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              Why Businesses{" "}
+              <span className="text-[#047857] dark:text-[#34d399]">
+                Trust Us
+              </span>
+            </h2>
+            <p className="text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
+              Certified excellence, proven reliability, and industry-leading
+              standards
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+                title: "ISO Certified",
+                desc: "Quality management systems meeting international standards",
+              },
+              {
+                icon: "M13 10V3L4 14h7v7l9-11h-7z",
+                title: "99.9% Uptime",
+                desc: "Industry-leading network reliability with redundant infrastructure",
+              },
+              {
+                icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+                title: "24/7 Support",
+                desc: "Round-the-clock technical assistance from local experts",
+              },
+              {
+                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                title: "Licensed Provider",
+                desc: "Fully licensed and regulated by BICMA (Bhutan InfoComm and Media Authority)",
+              },
+              {
+                icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+                title: "Enterprise Solutions",
+                desc: "Scalable fiber solutions for growing businesses",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm dark:shadow-lg hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-[#047857]/30 dark:hover:border-[#34d399]/30"
+              >
+                <div className="flex flex-col items-center text-center space-y-4">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#047857]/10 dark:bg-[#34d399]/20 group-hover:bg-[#047857] dark:group-hover:bg-[#34d399] transition-all duration-300">
+                    <svg
+                      className="w-8 h-8 text-[#047857] dark:text-[#34d399] group-hover:text-white transition-colors duration-300"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d={item.icon}
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-black dark:text-white mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-black dark:text-gray-300">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Client Testimonials Section */}
-      <section className="py-20 px-6 bg-linear-to-b from-gray-50 to-white">
+      <section className="py-20 px-6 bg-white dark:bg-gray-900">
         <div className="mx-auto max-w-7xl">
           <div
             ref={testimonialsHeaderRef}
@@ -1006,20 +955,24 @@ export default function Home() {
                 : "opacity-0 translate-y-6"
             }`}
           >
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#3D52A0]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] dark:text-[#34d399]">
               Testimonials
             </p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
-              What Our <span className="text-[#3D52A0]">Clients</span> Say
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              What Our{" "}
+              <span className="text-[#047857] dark:text-[#34d399]">
+                Clients
+              </span>{" "}
+              Say
             </h2>
-            <p className="text-base text-gray-600 font-light max-w-2xl mx-auto">
+            <p className="text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
               Hear from our satisfied customers across Bhutan.
             </p>
           </div>
 
           <div className="relative max-w-4xl mx-auto">
             {/* Testimonial Cards */}
-            <div className="relative h-96 sm:h-80 overflow-hidden rounded-3xl bg-white shadow-2xl border border-gray-100">
+            <div className="relative h-96 sm:h-80 overflow-hidden rounded-3xl bg-white dark:bg-gray-800 shadow-2xl border border-gray-100 dark:border-gray-700">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
@@ -1037,7 +990,7 @@ export default function Home() {
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <svg
                           key={i}
-                          className="w-5 h-5 text-[#3D52A0]"
+                          className="w-5 h-5 text-[#047857] dark:text-[#34d399]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1047,19 +1000,19 @@ export default function Home() {
                     </div>
 
                     {/* Feedback */}
-                    <blockquote className="text-lg sm:text-xl text-gray-700 font-light italic mb-8 max-w-2xl leading-relaxed">
+                    <blockquote className="text-lg sm:text-xl text-black dark:text-gray-300 font-light italic mb-8 max-w-2xl leading-relaxed">
                       {testimonial.feedback}
                     </blockquote>
 
                     {/* Client Info */}
                     <div className="space-y-1">
-                      <p className="text-lg font-bold text-gray-900">
+                      <p className="text-lg font-bold text-black dark:text-white">
                         {testimonial.name}
                       </p>
-                      <p className="text-sm text-[#3D52A0] font-semibold">
+                      <p className="text-sm text-[#047857] dark:text-[#34d399] font-semibold">
                         {testimonial.role}
                       </p>
-                      <p className="text-xs text-gray-500 uppercase tracking-wide">
+                      <p className="text-xs text-black dark:text-gray-400 opacity-60 uppercase tracking-wide">
                         {testimonial.location}
                       </p>
                     </div>
@@ -1076,8 +1029,8 @@ export default function Home() {
                   onClick={() => setActiveTestimonial(index)}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
                     index === activeTestimonial
-                      ? "w-8 bg-[#3D52A0]"
-                      : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                      ? "w-8 bg-[#047857] dark:bg-[#34d399]"
+                      : "w-2.5 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -1092,11 +1045,11 @@ export default function Home() {
                     (prev - 1 + testimonials.length) % testimonials.length
                 )
               }
-              className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-gray-50 hover:scale-110 transition-all duration-300 group"
+              className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-110 transition-all duration-300 group"
               aria-label="Previous testimonial"
             >
               <svg
-                className="w-5 h-5 text-gray-600 group-hover:text-[#3D52A0] transition-colors"
+                className="w-5 h-5 text-black dark:text-white group-hover:text-[#047857] transition-colors"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -1114,11 +1067,11 @@ export default function Home() {
               onClick={() =>
                 setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
               }
-              className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-gray-50 hover:scale-110 transition-all duration-300 group"
+              className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-110 transition-all duration-300 group"
               aria-label="Next testimonial"
             >
               <svg
-                className="w-5 h-5 text-gray-600 group-hover:text-[#3D52A0] transition-colors"
+                className="w-5 h-5 text-black dark:text-white group-hover:text-[#047857] transition-colors"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -1131,261 +1084,207 @@ export default function Home() {
                 />
               </svg>
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* News & Updates Section */}
+      <section className="py-20 px-6 bg-linear-to-b from-gray-50 dark:from-gray-800 to-white dark:to-gray-900">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center space-y-4 mb-12">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] dark:text-[#34d399]">
+              News & Updates
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              Latest from{" "}
+              <span className="text-[#047857] dark:text-[#34d399]">
+                NILO FibreNet
+              </span>
+            </h2>
+            <p className="text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
+              Stay informed about our latest network expansions, product
+              launches, and company updates.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {news.map((item, idx) => (
+              <div
+                key={idx}
+                className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl dark:hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col"
+              >
+                {/* Featured Image Placeholder */}
+                <div className="relative w-full h-40 bg-linear-to-br from-[#047857]/10 dark:from-[#34d399]/20 to-[#059669]/10 dark:to-[#10b981]/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <span className="text-5xl">📰</span>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col grow">
+                  {/* Date & Category */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-semibold text-[#047857] dark:text-[#34d399] uppercase tracking-wide">
+                      {item.category}
+                    </span>
+                    <span className="text-xs text-black dark:text-gray-400 opacity-60">
+                      {item.date}
+                    </span>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="h-px bg-linear-to-r from-[#047857]/20 dark:from-[#34d399]/20 to-transparent mb-4" />
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-black dark:text-white mb-3 group-hover:text-[#047857] dark:group-hover:text-[#34d399] transition-colors">
+                    {item.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p className="text-sm text-black dark:text-gray-300 leading-relaxed mb-5 line-clamp-3 grow">
+                    {item.excerpt}
+                  </p>
+
+                  {/* Read More Link */}
+                  <Link
+                    href={item.link}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#047857] dark:text-[#34d399] hover:text-[#059669] dark:hover:text-[#10b981] transition-colors group/link"
+                  >
+                    Read More
+                    <svg
+                      className="w-4 h-4 group-hover/link:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* View All News CTA */}
+          <div className="mt-12 text-center">
+            <Link
+              href="/news"
+              className="inline-flex h-12 items-center justify-center rounded-xl border-2 border-[#047857] dark:border-[#34d399] px-8 text-sm font-bold text-[#047857] dark:text-[#34d399] hover:bg-[#047857] dark:hover:bg-[#34d399] hover:text-white dark:hover:text-black transition-all duration-300"
+            >
+              View All News
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Meet the Team Section */}
-      <section
-        id="teams"
-        className="py-20 px-6 bg-linear-to-b from-white via-[#7091E6]/5 to-gray-50"
-      >
-        <div className="mx-auto max-w-7xl space-y-10">
+      <section id="teams" className="py-20 px-6 bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-7xl">
           <div
             ref={teamsHeaderRef}
-            className={`space-y-4 text-center transition-all duration-700 ease-out will-change-transform ${
+            className={`text-center space-y-4 mb-16 transition-all duration-700 ease-out will-change-transform ${
               teamsHeaderInView
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6"
             }`}
           >
-            <div className="space-y-4">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#3D52A0]">
-                Our Team
-              </p>
-              <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
-                Meet the <span className="text-[#3D52A0]">Experts</span>
-              </h2>
-              <p className="text-base text-gray-600 max-w-3xl mx-auto font-light">
-                A dedicated local team committed to keeping you connected.
-              </p>
-            </div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] dark:text-[#34d399]">
+              Meet the Team
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+              Our Expert{" "}
+              <span className="text-[#047857] dark:text-[#34d399]">Team</span>{" "}
+              in Bhutan
+            </h2>
+            <p className="text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
+              Dedicated professionals ensuring top-notch service and support.
+            </p>
           </div>
 
-          {/* Team Carousel */}
-          <div className="relative max-w-4xl mx-auto">
-            {/* Main Carousel */}
-            <div className="relative h-96 sm:h-125 overflow-hidden rounded-3xl bg-white shadow-2xl border border-gray-100">
-              {teamMembers.map((member, index) => (
-                <div
-                  key={member.name}
-                  className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                    index === activeTeamMember
-                      ? "opacity-100 translate-x-0"
-                      : index < activeTeamMember
-                      ? "opacity-0 -translate-x-full"
-                      : "opacity-0 translate-x-full"
-                  }`}
-                >
-                  {/* Mobile Layout */}
-                  <div className="sm:hidden relative w-full h-full flex flex-col items-center justify-center group">
-                    {/* Image Background */}
-                    {member.image ? (
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover object-center"
-                          priority
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-full h-full bg-linear-to-br from-[#7091E6]/10 to-[#EDE8F5]/10 flex items-center justify-center text-center">
-                        <div>
-                          <p className="text-8xl mb-4">👤</p>
-                          <p className="text-sm text-gray-500 font-medium">
-                            Photo coming soon
-                          </p>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
-
-                    {/* Name & Role - Bottom Card */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-2xl font-extrabold">{member.name}</h3>
-                      <p className="text-sm font-semibold text-[#7091E6] uppercase tracking-wide mt-2">
-                        {member.role}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Desktop Layout */}
-                  <div className="hidden sm:grid sm:grid-cols-2 h-full items-center">
-                    {/* Image Section */}
-                    <div className="relative w-full h-full bg-linear-to-br from-[#7091E6]/10 to-[#EDE8F5]/10 flex items-center justify-center order-1">
-                      {member.image ? (
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={member.image}
-                            alt={member.name}
-                            fill
-                            className="object-cover object-center"
-                            priority
-                            sizes="(min-width: 640px) 50vw, 100vw"
-                          />
-                        </div>
-                      ) : (
-                        <div className="text-center">
-                          <p className="text-6xl mb-4">👤</p>
-                          <p className="text-sm text-gray-500 font-medium">
-                            Photo coming soon
-                          </p>
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
-                    </div>
-
-                    {/* Info Section */}
-                    <div className="p-8 sm:p-12 flex flex-col justify-center order-2 space-y-6 h-full">
-                      <div className="space-y-2">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#3D52A0]">
-                          {member.role}
-                        </p>
-                        <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-                          {member.name}
-                        </h3>
-                      </div>
-
-                      <div className="space-y-3 pt-4">
-                        <p className="text-gray-600 font-light leading-relaxed">
-                          Dedicated member of the NILO FibreNet team, committed
-                          to delivering exceptional service and connectivity to
-                          our valued customers across Bhutan.
-                        </p>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4 pt-4">
-                        <div className="p-4 rounded-2xl bg-[#3D52A0]/10 border border-[#3D52A0]/20">
-                          <p className="text-xs font-bold text-[#3D52A0] uppercase tracking-wide">
-                            Position
-                          </p>
-                          <p className="text-sm font-semibold text-gray-900 mt-1">
-                            {member.role}
-                          </p>
-                        </div>
-                        <div className="p-4 rounded-2xl bg-[#7091E6]/10 border border-[#7091E6]/20">
-                          <p className="text-xs font-bold text-[#7091E6] uppercase tracking-wide">
-                            Team
-                          </p>
-                          <p className="text-sm font-semibold text-gray-900 mt-1">
-                            NILO FibreNet
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          {/* Team Grid Layout - Show only 3 members */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {teamMembers.slice(0, 3).map((member, index) => (
+              <div
+                key={index}
+                className="group rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-lg dark:shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-xl dark:hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              >
+                {/* Image Placeholder */}
+                <div className="relative w-full aspect-square mb-3 rounded-xl overflow-hidden bg-linear-to-br from-[#047857]/10 dark:from-[#34d399]/20 to-[#059669]/10 dark:to-[#10b981]/20">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                  />
                 </div>
-              ))}
-            </div>
 
-            {/* Navigation Dots */}
-            <div className="flex justify-center gap-2 mt-6 sm:mt-8 flex-wrap">
-              {teamMembers.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveTeamMember(index)}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    index === activeTeamMember
-                      ? "w-8 bg-[#3D52A0]"
-                      : "w-3 bg-gray-300 hover:bg-gray-400"
-                  }`}
-                  aria-label={`Go to team member ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Navigation Arrows */}
-            <button
-              onClick={() =>
-                setActiveTeamMember(
-                  (prev) => (prev - 1 + teamMembers.length) % teamMembers.length
-                )
-              }
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-[#3D52A0] hover:text-white hover:scale-110 transition-all duration-300 group z-10"
-              aria-label="Previous team member"
-            >
-              <svg
-                className="w-5 h-5 transition-colors"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-
-            <button
-              onClick={() =>
-                setActiveTeamMember((prev) => (prev + 1) % teamMembers.length)
-              }
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-[#3D52A0] hover:text-white hover:scale-110 transition-all duration-300 group z-10"
-              aria-label="Next team member"
-            >
-              <svg
-                className="w-5 h-5 transition-colors"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Team Grid - All Members */}
-          <div className="mt-16 pt-8 border-t border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-              Full Team Directory
-            </h3>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {teamMembers.map((member) => (
-                <div
-                  key={member.name}
-                  className="text-center p-4 rounded-2xl hover:bg-[#7091E6]/5 transition-colors duration-300 group cursor-pointer"
-                >
-                  <div className="w-20 h-20 rounded-full bg-linear-to-br from-[#3D52A0] to-[#7091E6] mx-auto mb-3 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300">
-                    {member.image ? (
-                      <div className="relative w-full h-full rounded-full overflow-hidden">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : (
-                      "👤"
-                    )}
-                  </div>
-                  <p className="font-bold text-sm text-gray-900">
+                {/* Member Info */}
+                <div className="text-center space-y-1.5">
+                  <h3 className="text-lg font-bold text-black dark:text-white group-hover:text-[#047857] dark:group-hover:text-[#34d399] transition-colors">
                     {member.name}
-                  </p>
-                  <p className="text-xs text-[#3D52A0] font-semibold uppercase tracking-wide mt-1">
+                  </h3>
+                  <p className="text-sm text-[#047857] dark:text-[#34d399] font-semibold">
                     {member.role}
                   </p>
+
+                  {/* Social Links */}
+                  <div className="flex justify-center gap-2 pt-3">
+                    <a
+                      href="#"
+                      className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 hover:bg-[#047857] hover:text-white transition-colors"
+                      aria-label="LinkedIn"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="#"
+                      className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 hover:bg-[#047857] hover:text-white transition-colors"
+                      aria-label="Email"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
+
+          {/* View All Team CTA */}
+          <div className="mt-12 text-center">
+            <Link
+              href="/teams"
+              className="inline-flex h-12 items-center justify-center rounded-xl border-2 border-[#047857] dark:border-[#34d399] px-8 text-sm font-bold text-[#047857] dark:text-[#34d399] hover:bg-[#047857] dark:hover:bg-[#34d399] hover:text-white dark:hover:text-black transition-all duration-300"
+            >
+              View All Team Members
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-white">
+      <section id="contact" className="py-20 px-6 bg-white dark:bg-gray-900">
         <div className="mx-auto max-w-4xl space-y-10">
           <div
             ref={contactHeaderRef}
@@ -1395,10 +1294,10 @@ export default function Home() {
                 : "opacity-0 translate-y-6"
             }`}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight">
               Contact Us
             </h2>
-            <p className="text-base text-gray-600 font-light max-w-2xl mx-auto">
+            <p className="text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
               Have a question or need a custom plan? Send us a message.
             </p>
           </div>
@@ -1407,9 +1306,9 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
             <a
               href="tel:+97517608088"
-              className="flex items-center gap-4 p-6 rounded-2xl bg-linear-to-br from-[#3D52A0]/10 to-[#7091E6]/10 border border-[#3D52A0]/20 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+              className="flex items-center gap-4 p-6 rounded-2xl bg-linear-to-br from-[#047857]/10 dark:from-[#34d399]/20 to-[#059669]/10 dark:to-[#10b981]/20 border border-[#047857]/20 dark:border-[#34d399]/30 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#3D52A0] shadow-lg">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#047857] dark:bg-[#34d399] shadow-lg">
                 <svg
                   className="h-7 w-7 text-white"
                   fill="none"
@@ -1425,10 +1324,10 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <p className="text-xs font-bold text-[#3D52A0] uppercase tracking-wide">
+                <p className="text-xs font-bold text-[#047857] dark:text-[#34d399] uppercase tracking-wide">
                   Call Us
                 </p>
-                <p className="text-lg font-bold text-gray-900 group-hover:text-[#3D52A0] transition-colors">
+                <p className="text-lg font-bold text-black dark:text-white group-hover:text-[#047857] dark:group-hover:text-[#34d399] transition-colors">
                   +975 77 88 88 66
                 </p>
               </div>
@@ -1436,9 +1335,9 @@ export default function Home() {
 
             <a
               href="mailto:nima.lotey@gmail.com"
-              className="flex items-center gap-4 p-6 rounded-2xl bg-linear-to-br from-[#7091E6]/10 to-[#8697C4]/10 border border-[#7091E6]/20 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+              className="flex items-center gap-4 p-6 rounded-2xl bg-linear-to-br from-[#059669]/10 dark:from-[#10b981]/20 to-[#10b981]/10 dark:to-[#34d399]/20 border border-[#059669]/20 dark:border-[#10b981]/30 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#7091E6] shadow-lg">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#059669] dark:bg-[#10b981] shadow-lg">
                 <svg
                   className="h-7 w-7 text-white"
                   fill="none"
@@ -1454,10 +1353,10 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <p className="text-xs font-bold text-[#7091E6] uppercase tracking-wide">
+                <p className="text-xs font-bold text-[#059669] dark:text-[#10b981] uppercase tracking-wide">
                   Email Us
                 </p>
-                <p className="text-lg font-bold text-gray-900 group-hover:text-[#7091E6] transition-colors">
+                <p className="text-lg font-bold text-black dark:text-white group-hover:text-[#059669] dark:group-hover:text-[#10b981] transition-colors">
                   nima.lotey@gmail.com
                 </p>
               </div>
@@ -1465,18 +1364,18 @@ export default function Home() {
           </div>
 
           {submitted ? (
-            <div className="rounded-2xl border-2 border-green-200 bg-green-50 p-6 text-green-800 font-semibold text-center shadow-lg text-base">
+            <div className="rounded-2xl border-2 border-green-200 dark:border-green-600 bg-green-50 dark:bg-green-900/20 p-6 text-green-800 dark:text-green-200 font-semibold text-center shadow-lg text-base">
               Thank you! Your message has been submitted.
             </div>
           ) : (
             <form
               onSubmit={onSubmit}
-              className="grid grid-cols-1 gap-6 sm:grid-cols-2 bg-linear-to-br from-gray-50 to-white p-8 rounded-3xl border border-gray-100 shadow-xl"
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 bg-linear-to-br from-gray-50 dark:from-gray-800 to-white dark:to-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-xl"
             >
               <div className="sm:col-span-1">
                 <label
                   htmlFor="contact-name"
-                  className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2"
+                  className="block text-xs font-bold text-black dark:text-white uppercase tracking-wide mb-2"
                 >
                   Name
                 </label>
@@ -1486,11 +1385,11 @@ export default function Home() {
                   autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3D52A0] focus:border-transparent transition-all duration-200"
+                  className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-3 text-sm text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#047857] dark:focus:ring-[#34d399] focus:border-transparent transition-all duration-200"
                   placeholder="Your name"
                 />
                 {errors.name && (
-                  <p className="mt-2 text-xs text-red-600 font-semibold">
+                  <p className="mt-2 text-xs text-red-600 dark:text-red-400 font-semibold">
                     {errors.name}
                   </p>
                 )}
@@ -1499,7 +1398,7 @@ export default function Home() {
               <div className="sm:col-span-1">
                 <label
                   htmlFor="contact-email"
-                  className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2"
+                  className="block text-xs font-bold text-black dark:text-white uppercase tracking-wide mb-2"
                 >
                   Email
                 </label>
@@ -1509,11 +1408,11 @@ export default function Home() {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3D52A0] focus:border-transparent transition-all duration-200"
+                  className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-3 text-sm text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#047857] dark:focus:ring-[#34d399] focus:border-transparent transition-all duration-200"
                   placeholder="nima.lotey@gmail.com"
                 />
                 {errors.email && (
-                  <p className="mt-2 text-xs text-red-600 font-semibold">
+                  <p className="mt-2 text-xs text-red-600 dark:text-red-400 font-semibold">
                     {errors.email}
                   </p>
                 )}
@@ -1522,7 +1421,7 @@ export default function Home() {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="contact-message"
-                  className="block text-xs font-bold text-gray-900 uppercase tracking-wide mb-2"
+                  className="block text-xs font-bold text-black dark:text-white uppercase tracking-wide mb-2"
                 >
                   Message
                 </label>
@@ -1531,11 +1430,11 @@ export default function Home() {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3D52A0] focus:border-transparent transition-all duration-200"
+                  className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-3 text-sm text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#047857] dark:focus:ring-[#34d399] focus:border-transparent transition-all duration-200"
                   placeholder="Tell us how we can help..."
                 />
                 {errors.message && (
-                  <p className="mt-2 text-xs text-red-600 font-semibold">
+                  <p className="mt-2 text-xs text-red-600 dark:text-red-400 font-semibold">
                     {errors.message}
                   </p>
                 )}
@@ -1544,7 +1443,7 @@ export default function Home() {
               <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-linear-to-r from-[#3D52A0] to-[#7091E6] px-10 text-sm font-bold text-white shadow-lg shadow-[#3D52A0]/30 hover:shadow-xl hover:shadow-[#3D52A0]/40 transition-all duration-300 hover:scale-105"
+                  className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-[#047857] hover:bg-[#059669] dark:bg-[#34d399] dark:hover:bg-[#10b981] px-10 text-sm font-bold text-white dark:text-black shadow-lg shadow-[#047857]/30 dark:shadow-[#34d399]/30 hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   Submit Message
                 </button>

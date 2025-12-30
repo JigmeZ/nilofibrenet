@@ -2,19 +2,32 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
-  --accent: #9eb371; /* sage green */
-  --accent-foreground: #ffffff;
-  --ring: #9eb371;
-  --accent-secondary: #e17878; /* coral pink */
-  --neutral-warm: #e0d9d2; /* warm beige */
-  --neutral-cool: #767771; /* cool gray */
+  --foreground: #000000;
+  --accent: #047857;
+  --ring: #047857;
+  --container-light: #f8f9fa;
+  --container-dark: #1a1a1a;
+}
+
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --accent: #34d399;
+  --ring: #10b981;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  /* Simplified: single solid background */
-  background: var(--background);
-  color: var(--foreground);
+  background-image: url("/5e9ed6fc-ce18-4b97-9f5d-920dbfa35fec.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-color: #ffffff;
+  color: #000000;
   font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI,
     Roboto, Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,68 +35,224 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.dark body {
+  background-color: #1a1a1a;
+  background-image: none;
+  color: #ffffff;
+}
+
 /* Smooth scrolling and compensate for sticky header */
 html {
   scroll-behavior: smooth;
 }
+
+section {
+  background-color: #f8f9fa !important;
+}
+
+section:nth-child(odd) {
+  background-color: #ffffff !important;
+}
+
+.dark section {
+  background-color: rgba(26, 26, 26, 0.95) !important;
+  color: #ffffff;
+}
+
+.dark section:nth-child(odd) {
+  background-color: #1a1a1a !important;
+}
+
 section[id] {
-  scroll-margin-top: 96px; /* updated for h-20 header */
+  scroll-margin-top: 96px;
 }
 
-/* Polished text selection */
+/* Light mode: Black text, green accents */
+body,
+p,
+span,
+li,
+div,
+label {
+  color: #000000;
+}
+
+.dark body,
+.dark p,
+.dark span,
+.dark li,
+.dark div,
+.dark label {
+  color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000000;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #ffffff;
+}
+
+a {
+  color: #047857;
+}
+
+a:hover {
+  color: #059669;
+}
+
+.dark a {
+  color: #34d399;
+}
+
+.dark a:hover {
+  color: #10b981;
+}
+
+/* Text selection */
 ::selection {
-  background: var(--accent);
-  color: var(--accent-foreground);
+  background: #047857;
+  color: #ffffff;
 }
 
-/* Modern scrollbar */
+.dark ::selection {
+  background: #34d399;
+  color: #000000;
+}
+
+/* Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(158, 179, 113, 0.6) transparent;
+  scrollbar-color: #047857 transparent;
 }
+
+.dark * {
+  scrollbar-color: #34d399 transparent;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    rgba(158, 179, 113, 0.95),
-    rgba(225, 120, 120, 0.95)
-  );
+  background: #047857;
   border-radius: 8px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    rgba(158, 179, 113, 1),
-    rgba(225, 120, 120, 1)
-  );
+  background: #059669;
 }
 
-/* Nicer form focus and placeholders */
+.dark ::-webkit-scrollbar-thumb {
+  background: #34d399;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* Form inputs */
 input,
 textarea,
 select {
   transition: box-shadow 0.2s ease, border-color 0.2s ease,
     background-color 0.2s ease;
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #e5e7eb;
 }
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: #d1d5db;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  color: #ffffff;
+  background-color: #1a1a1a;
+  border-color: #374151;
+}
+
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring), transparent 40%);
-  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.2);
+  border-color: #047857;
 }
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+  border-color: #34d399;
+}
+
 ::placeholder {
-  color: #9ca3af;
+  color: #999999;
   opacity: 1;
 }
 
-/* Motion-safe fade-in on sections/cards */
+.dark ::placeholder {
+  color: #999999;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.2);
+  border-color: #047857;
+}
+
+.dark :focus-visible {
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+  border-color: #34d399;
+}
+
+/* Light mode card backgrounds */
+.bg-white {
+  background-color: #ffffff;
+}
+
+.bg-white:hover {
+  background-color: #f8f9fa;
+}
+
+/* Light mode section backgrounds */
+.bg-linear-to-b {
+  background: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
+.from-gray-50 {
+  --tw-gradient-from: #f9fafb;
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--tw-gradient-to, rgb(249 250 251 / 0));
+}
+
+.to-white {
+  --tw-gradient-to: #ffffff;
+}
+
+/* Animations */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes fadeInUp {
     from {
@@ -100,47 +269,7 @@ select:focus {
   .rounded-xl {
     animation: fadeInUp 400ms ease both;
   }
-}
 
-/* Card hover elevation */
-.rounded-xl {
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-.rounded-xl:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* Accessible focus-visible */
-:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring), transparent 40%);
-  border-color: var(--ring);
-}
-
-/* Professional typography enhancements */
-h1,
-h2,
-h3 {
-  letter-spacing: -0.02em;
-}
-
-p {
-  line-height: 1.6;
-}
-
-/* Refined button transitions */
-a[class*="inline-flex"][class*="rounded-lg"] {
-  transition: all 200ms ease;
-}
-
-/* Enhanced section spacing */
-section[id] {
-  scroll-margin-top: 96px;
-}
-
-/* Subtle entrance animation for hero content */
-@media (prefers-reduced-motion: no-preference) {
   @keyframes slideInLeft {
     from {
       opacity: 0;
@@ -169,29 +298,28 @@ section[id] {
   }
 }
 
-/* Spotlight hover that follows the cursor */
-.hover-spotlight {
-  position: relative;
-}
-.hover-spotlight::after {
-  content: "";
-  position: absolute;
-  inset: -1px; /* ensure glow reaches edges under the border */
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 200ms ease;
-  background: radial-gradient(
-    220px 220px at var(--x, 50%) var(--y, 50%),
-    rgba(158, 179, 113, 0.18),
-    transparent 60%
-  );
-}
-.hover-spotlight:hover::after {
-  opacity: 1;
+/* Card hover */
+.rounded-xl {
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-/* Marquee-style smooth auto slider */
+.rounded-xl:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Marquee */
 @keyframes marquee-x {
   from {
     transform: translateX(0);
@@ -200,10 +328,10 @@ section[id] {
     transform: translateX(-50%);
   }
 }
+
 .marquee {
   position: relative;
   overflow: hidden;
-  /* edge fade */
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
@@ -219,6 +347,7 @@ section[id] {
     transparent
   );
 }
+
 .marquee-track {
   display: flex;
   align-items: stretch;
@@ -226,6 +355,39 @@ section[id] {
   width: max-content;
   animation: marquee-x 36s linear infinite;
 }
+
 .marquee:hover .marquee-track {
   animation-play-state: paused;
+}
+
+/* Trust & Certifications section - light mode */
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --accent: #34d399;
+  --ring: #10b981;
+}
+
+/* Ensure Trust section background in light mode */
+section:nth-child(n + 13) {
+  background-color: #ffffff !important;
+}
+
+section:nth-child(n + 13) .bg-white {
+  background-color: #ffffff !important;
+}
+
+section:nth-child(n + 13) .dark .bg-white {
+  background-color: #1a1a1a !important;
+}
+
+/* Trust & Certifications section - explicitly white in light mode */
+section:nth-child(13) {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(to bottom, #ffffff, #f9fafb) !important;
+}
+
+.dark section:nth-child(13) {
+  background-color: rgba(26, 26, 26, 0.95) !important;
+  background-image: linear-gradient(to bottom, #111827, #1a1a1a) !important;
 }
