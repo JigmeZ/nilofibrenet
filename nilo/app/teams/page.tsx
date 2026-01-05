@@ -21,7 +21,7 @@ const team = [
   },
   {
     name: "Dorji Wangchuk",
-    role: "Fibre Technician Head",
+    role: "Technical Manager",
     image: Dorji,
   },
   {

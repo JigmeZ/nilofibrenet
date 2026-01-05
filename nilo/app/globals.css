@@ -495,3 +495,28 @@ section:nth-child(13) {
 .dark button {
   color: #ffffff !important;
 }
+
+/* Light mode buttons - ensure visibility without overriding explicit bg classes */
+html:not(.dark) button:not([class*="bg-"]) {
+  color: #000000;
+  background-color: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+html:not(.dark) button:not([class*="bg-"]):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.2);
+  border-color: #047857;
+}
+
+html:not(.dark) button.bg-white,
+html:not(.dark) .bg-white button {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+html:not(.dark) button:not([class*="bg-"]):hover {
+  background-color: #eef2f7;
+  border-color: #d1d5db;
+}

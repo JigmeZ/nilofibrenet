@@ -54,7 +54,7 @@ export default function Home() {
     },
     {
       name: "Dorji Wangchuk",
-      role: "Fibre Technician Head",
+      role: "Technical Manager",
       image: Dorji,
     },
     {
@@ -316,6 +316,7 @@ export default function Home() {
               <Link
                 href="/#services"
                 className="group inline-flex h-12 sm:h-12 items-center justify-center rounded-xl bg-[#047857] px-6 sm:px-8 text-sm font-bold text-white shadow-lg shadow-[#047857]/30 hover:bg-[#059669] hover:shadow-xl hover:shadow-[#059669]/40 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                style={{ color: "#ffffff" }} // ensure text is white
               >
                 Explore Services
                 <svg
@@ -682,7 +683,7 @@ export default function Home() {
                 src={wifi}
                 alt="WiFi coverage"
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
                 sizes="(min-width:1024px) 40vw, 100vw"
               />
@@ -1114,7 +1115,7 @@ export default function Home() {
                 className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl dark:hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex flex-col"
               >
                 {/* Featured Image Placeholder */}
-                <div className="relative w-full h-40 bg-linear-to-br from-[#047857]/10 dark:from-[#34d399]/20 to-[#059669]/10 dark:to-[#10b981]/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <div className="relative w-full h-40 bg-[#f2f4f7] dark:bg-[#1f2937] flex items-center justify-center transition-colors duration-200 group-hover:bg-[#e5e7eb] dark:group-hover:bg-[#111827]">
                   <span className="text-5xl">📰</span>
                 </div>
 
