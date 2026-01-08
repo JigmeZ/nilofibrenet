@@ -1090,25 +1090,26 @@ export default function Home() {
       </section>
 
       {/* News & Updates Section */}
-      <section className="py-20 px-6 bg-linear-to-b from-gray-50 dark:from-gray-800 to-white dark:to-gray-900">
+      <section className="py-20 px-4 sm:px-6 bg-linear-to-b from-gray-50 dark:from-gray-800 to-white dark:to-gray-900">
         <div className="mx-auto max-w-7xl">
           <div className="text-center space-y-4 mb-12">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] dark:text-[#34d399]">
               News & Updates
             </p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black dark:text-white tracking-tight">
               Latest from{" "}
               <span className="text-[#047857] dark:text-[#34d399]">
                 NILO FibreNet
               </span>
             </h2>
-            <p className="text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
               Stay informed about our latest network expansions, product
               launches, and company updates.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Mobile Stack, Tablet/Desktop Grid */}
+          <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 hidden">
             {news.map((item, idx) => (
               <div
                 key={idx}
@@ -1169,6 +1170,75 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Mobile Stack View - Vertical Cards */}
+          <div className="space-y-4 md:hidden">
+            {news.map((item, idx) => (
+              <div
+                key={idx}
+                className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md active:shadow-sm transition-all duration-300 overflow-hidden group"
+                style={{
+                  animation: `slideIn 0.4s ease-out ${idx * 0.1}s both`,
+                }}
+              >
+                <style>{`
+                  @keyframes slideIn {
+                    from {
+                      opacity: 0;
+                      transform: translateY(10px);
+                    }
+                    to {
+                      opacity: 1;
+                      transform: translateY(0);
+                    }
+                  }
+                `}</style>
+                <div className="flex gap-4 p-4">
+                  {/* Icon */}
+                  <div className="flex-shrink-0 w-14 h-14 rounded-lg bg-[#f0fdf9] dark:bg-[#034e3b] flex items-center justify-center text-2xl">
+                    📰
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <span className="text-xs font-bold text-[#047857] dark:text-[#34d399] uppercase tracking-wider flex-shrink-0">
+                        {item.category}
+                      </span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
+                        {item.date}
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-bold text-black dark:text-white line-clamp-2 group-active:text-[#047857] dark:group-active:text-[#34d399] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-1 mt-1">
+                      {item.excerpt}
+                    </p>
+                    <Link
+                      href={item.link}
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#047857] dark:text-[#34d399] mt-3 hover:text-[#059669] dark:hover:text-[#10b981] transition-colors"
+                    >
+                      Read More
+                      <svg
+                        className="w-3 h-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
           {/* View All News CTA */}
           <div className="mt-12 text-center">
             <Link
@@ -1182,7 +1252,10 @@ export default function Home() {
       </section>
 
       {/* Meet the Team Section */}
-      <section id="teams" className="py-20 px-6 bg-white dark:bg-gray-900">
+      <section
+        id="teams"
+        className="py-20 px-4 sm:px-6 bg-white dark:bg-gray-900"
+      >
         <div className="mx-auto max-w-7xl">
           <div
             ref={teamsHeaderRef}
@@ -1195,18 +1268,18 @@ export default function Home() {
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#047857] dark:text-[#34d399]">
               Meet the Team
             </p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black dark:text-white tracking-tight">
               Our Expert{" "}
               <span className="text-[#047857] dark:text-[#34d399]">Team</span>{" "}
               in Bhutan
             </h2>
-            <p className="text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-black dark:text-gray-300 font-light max-w-2xl mx-auto">
               Dedicated professionals ensuring top-notch service and support.
             </p>
           </div>
 
-          {/* Team Grid Layout - Show only 3 members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {/* Desktop Grid - Hide on mobile */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 max-w-5xl mx-auto">
             {teamMembers.slice(0, 3).map((member, index) => (
               <div
                 key={index}
@@ -1266,6 +1339,90 @@ export default function Home() {
                         />
                       </svg>
                     </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Vertical Card Layout */}
+          <div className="space-y-4 md:hidden">
+            {teamMembers.slice(0, 3).map((member, index) => (
+              <div
+                key={index}
+                className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md active:shadow-sm transition-all duration-300 overflow-hidden group"
+                style={{
+                  animation: `slideIn 0.4s ease-out ${index * 0.1}s both`,
+                }}
+              >
+                <style>{`
+                  @keyframes slideIn {
+                    from {
+                      opacity: 0;
+                      transform: translateY(10px);
+                    }
+                    to {
+                      opacity: 1;
+                      transform: translateY(0);
+                    }
+                  }
+                `}</style>
+                <div className="flex gap-4 p-4">
+                  {/* Image */}
+                  <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-linear-to-br from-[#047857]/10 to-[#059669]/10 dark:from-[#34d399]/20 dark:to-[#10b981]/20">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover group-active:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+
+                  {/* Info */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-sm font-bold text-black dark:text-white group-active:text-[#047857] dark:group-active:text-[#34d399] transition-colors">
+                      {member.name}
+                    </h3>
+                    <p className="text-xs text-[#047857] dark:text-[#34d399] font-semibold mt-1">
+                      {member.role}
+                    </p>
+
+                    {/* Social Links */}
+                    <div className="flex gap-2 mt-3">
+                      <a
+                        href="#"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-[#047857] dark:hover:bg-[#047857] hover:text-white transition-colors text-xs"
+                        aria-label="LinkedIn"
+                      >
+                        <svg
+                          className="w-3.5 h-3.5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                      </a>
+                      <a
+                        href="#"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-[#047857] dark:hover:bg-[#047857] hover:text-white transition-colors text-xs"
+                        aria-label="Email"
+                      >
+                        <svg
+                          className="w-3.5 h-3.5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

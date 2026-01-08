@@ -15,14 +15,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
 
   useLayoutEffect(() => {
-    // Check localStorage or system preference
+    // Check localStorage, default to light mode
     const savedTheme = localStorage.getItem("theme") as Theme | null;
-    const systemPreference = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
-
-    const initialTheme = savedTheme || systemPreference;
+    const initialTheme = savedTheme || "light";
     setTheme(initialTheme);
 
     if (initialTheme === "dark") {
